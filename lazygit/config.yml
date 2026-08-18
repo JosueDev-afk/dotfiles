@@ -1,0 +1,42 @@
+# ==============================================================================
+# lazygit — https://github.com/jesseduffield/lazygit
+# Referencia: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+# ==============================================================================
+
+git:
+  # Reusa delta, igual que `git diff` en la terminal
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never --line-numbers
+  parseEmoji: true
+
+gui:
+  nerdFontsVersion: "3"        # Iconos (requiere la JetBrainsMono Nerd Font)
+  showFileTree: true           # Archivos en árbol, no en lista plana
+  showRandomTip: false
+  scrollHeight: 4
+  mouseEvents: true
+
+  # Paleta ámbar sobre gris, igual que Ghostty
+  theme:
+    activeBorderColor:
+      - "#f1a53b"
+      - bold
+    inactiveBorderColor:
+      - "#4a4a4a"
+    selectedLineBgColor:
+      - "#2a2a2a"
+    optionsTextColor:
+      - "#f1a53b"
+    cherryPickedCommitBgColor:
+      - "#2a2a2a"
+    cherryPickedCommitFgColor:
+      - "#f1a53b"
+    unstagedChangesColor:
+      - red
+
+os:
+  edit: "nvim {{filename}}"    # Abre archivos en Neovim (LazyVim)
+
+confirmOnQuit: false
+disableStartupPopups: true

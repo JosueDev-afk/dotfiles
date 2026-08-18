@@ -1,0 +1,89 @@
+# ==============================================================================
+# .gitconfig — https://github.com/JosueDev-afk/dotfiles
+# ==============================================================================
+
+[user]
+	name = JosueDev-afk
+	email = josue_ceballos12@hotmail.com
+
+# --- Diffs con delta ----------------------------------------------------------
+# delta es a `git diff` lo que bat es a `cat`: sintaxis coloreada y legible.
+[core]
+	pager = delta
+	excludesfile = ~/.config/git/ignore
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true              # n / N para saltar entre archivos del diff
+	line-numbers = true          # Números de línea a los lados
+	dark = true
+	syntax-theme = Monokai Extended Origin
+	hyperlinks = true            # Rutas clicables en la terminal
+
+	# Paleta ámbar, igual que la terminal
+	file-style = "#f1a53b" bold
+	file-decoration-style = "#f1a53b" ul
+	hunk-header-decoration-style = "#4a4a4a" box
+	line-numbers-left-style = "#4a4a4a"
+	line-numbers-right-style = "#4a4a4a"
+	line-numbers-zero-style = "#4a4a4a"
+
+[diff]
+	colorMoved = default         # Distingue código movido de código nuevo
+	algorithm = histogram        # Diffs más legibles que el algoritmo por defecto
+
+[merge]
+	conflictStyle = zdiff3       # En los conflictos muestra también el original
+
+# --- Comportamiento por defecto -----------------------------------------------
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true                # Historial lineal, sin merges de "Merge branch main"
+
+[push]
+	autoSetupRemote = true       # `git push` sin escribir -u origin <rama>
+	followTags = true
+
+[fetch]
+	prune = true                 # Borra ramas locales que ya no existen en el remoto
+
+[rerere]
+	enabled = true               # Recuerda cómo resolviste un conflicto y lo repite
+
+[column]
+	ui = auto
+
+[branch]
+	sort = -committerdate        # Ramas ordenadas por uso reciente, no alfabéticamente
+
+# --- Atajos -------------------------------------------------------------------
+[alias]
+	s = status -sb                              # Estado corto y legible
+	co = checkout
+	br = branch
+	cm = commit -m
+	ca = commit --amend --no-edit               # Corrige el último commit sin editar el mensaje
+	aa = add --all
+
+	# Log gráfico de una línea por commit
+	lg = log --graph --pretty=format:'%C(auto)%h%d %s %C(dim)(%cr) <%an>' --all
+	last = log -1 --stat                        # Qué hice en el último commit
+
+	unstage = restore --staged                  # Saca del staging sin perder cambios
+	undo = reset --soft HEAD~1                  # Deshace el último commit, conserva el código
+	discard = restore                           # Tira los cambios de un archivo
+
+	wip = "!git add -A && git commit -m 'WIP'"  # Guardado rápido a medio trabajo
+	pushf = push --force-with-lease             # Force push que no pisa el trabajo de otros
+
+[color]
+	ui = auto
+
+# --- Local / privado ----------------------------------------------------------
+# Identidades o rutas de un solo cliente van aquí, fuera del repo.
+[include]
+	path = ~/.gitconfig.local

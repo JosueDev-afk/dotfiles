@@ -1,0 +1,22 @@
+# .gitignore global — aplica a todos tus repos.
+# Para basura del sistema y del editor, que no le importa a nadie más.
+
+# macOS
+.DS_Store
+.AppleDouble
+._*
+.Spotlight-V100
+.Trashes
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.nvim.lua
+
+# Entornos y secretos (red de seguridad, no sustituto del .gitignore del repo)
+.env
+.env.local
+.venv/

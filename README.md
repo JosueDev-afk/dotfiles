@@ -22,6 +22,7 @@ nietzshn in ~ λ
 | **Prompt** | [oh-my-posh](https://ohmyposh.dev) · tema `half-life` |
 | **Editor** | Neovim + [LazyVim](https://www.lazyvim.org) |
 | **Python** | [uv](https://github.com/astral-sh/uv) |
+| **Git** | [delta](https://github.com/dandavison/delta) + [lazygit](https://github.com/jesseduffield/lazygit) |
 | **Fuente** | JetBrainsMono Nerd Font |
 | **Colores** | `#1c1c1c` fondo · `#f1a53b` texto |
 
@@ -56,6 +57,11 @@ dotfiles/
 ├── ghostty/
 │   └── config            # Fuente, tema y colores del terminal
 ├── nvim/                 # LazyVim (starter + lazy-lock.json con las versiones)
+├── git/
+│   ├── .gitconfig        # Identidad, aliases y delta como paginador
+│   └── ignore            # .gitignore global (.DS_Store y demás basura)
+├── lazygit/
+│   └── config.yml        # Interfaz de git, con la misma paleta
 ├── ohmyposh/
 │   └── half-life.omp.json  # Tema del prompt, versionado aquí
 └── docs/
@@ -80,6 +86,7 @@ Los comandos de siempre, reemplazados:
 | `kubectl` | [kubecolor](https://github.com/kubecolor/kubecolor) | La misma salida, pero coloreada |
 | `vim` | [Neovim](https://neovim.io) + [LazyVim](https://www.lazyvim.org) | LSP, autocompletado y plugins ya configurados |
 | `pip`/`venv` | [uv](https://github.com/astral-sh/uv) | Instala Python y resuelve dependencias en segundos |
+| `git diff` | [delta](https://github.com/dandavison/delta) | Diffs con sintaxis coloreada y números de línea |
 
 Y además: [fzf](https://github.com/junegunn/fzf) (búsqueda difusa, lo usa `cdi`),
 AWS CLI, kubectl, Podman y Go.
@@ -94,6 +101,17 @@ confzsh         # Editar este .zshrc
 confghostty     # Editar la config de Ghostty
 reload          # Recargar la shell tras un cambio
 system          # Monitor de sistema expandido
+lg              # lazygit: staging, commits y ramas sin escribir comandos
+```
+
+Y los de git, ya dentro del `.gitconfig`:
+
+```bash
+git s           # status corto
+git lg          # log gráfico de una línea por commit
+git undo        # deshace el último commit sin perder el código
+git wip         # guardado rápido a medio trabajo
+git pushf       # force push que no pisa el trabajo de otros
 ```
 
 ## Cosas privadas
@@ -113,7 +131,7 @@ echo 'export MI_TOKEN="…"' >> ~/.zshrc.local
 - [x] Brewfile e instalador
 - [x] [LazyVim](https://www.lazyvim.org/) como editor
 - [x] Entorno de Python con [uv](https://github.com/astral-sh/uv)
-- [ ] Config de Git (`.gitconfig`, aliases, delta)
+- [x] Config de Git (`.gitconfig`, aliases, delta, lazygit)
 - [ ] tmux
 
 ## Licencia

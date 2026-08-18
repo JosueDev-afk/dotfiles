@@ -89,6 +89,10 @@ link_configs() {
   link "zsh/.zshrc"     "$HOME/.zshrc"
   link "ghostty/config" "$HOME/.config/ghostty/config"
   link "nvim"           "$HOME/.config/nvim"
+  link "git/.gitconfig" "$HOME/.gitconfig"
+  link "git/ignore"     "$HOME/.config/git/ignore"
+  # En macOS lazygit no usa ~/.config, sino Application Support
+  link "lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
 
   # En macOS, Ghostty también lee este directorio. Si quedó una config vieja ahí,
   # se aplicaría encima de la del repo, así que la apartamos.

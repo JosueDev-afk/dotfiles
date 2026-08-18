@@ -154,11 +154,19 @@ globalmente:
 uvx ruff check .            # Las corre en un entorno temporal
 ```
 
-### 2.9 Desarrollo
+### 2.9 Desarrollo y Git
 
 ```bash
-brew install go git gh
+brew install go git gh git-delta lazygit
 ```
+
+- **delta** hace que `git diff` se vea como `bat`: sintaxis coloreada, números de
+  línea y rutas clicables. Ya está conectado en el `.gitconfig` de este repo.
+- **lazygit** es una interfaz de git en la terminal: staging por líneas, commits,
+  ramas y rebase interactivo sin memorizar comandos. Se abre con `lg`.
+
+Dentro de lazygit: `espacio` agrega/quita archivos, `c` hace commit, `P` empuja,
+`?` abre la ayuda y `q` sale.
 
 ---
 
@@ -178,6 +186,15 @@ mkdir -p ~/.config/ghostty
 ln -s ~/Development/dotfiles/ghostty/config ~/.config/ghostty/config
 
 ln -s ~/Development/dotfiles/nvim ~/.config/nvim
+
+ln -s ~/Development/dotfiles/git/.gitconfig ~/.gitconfig
+mkdir -p ~/.config/git
+ln -s ~/Development/dotfiles/git/ignore ~/.config/git/ignore
+
+# lazygit en macOS no lee ~/.config, sino Application Support
+mkdir -p ~/Library/Application\ Support/lazygit
+ln -s ~/Development/dotfiles/lazygit/config.yml \
+      ~/Library/Application\ Support/lazygit/config.yml
 ```
 
 > **Ojo con Ghostty en macOS:** además de `~/.config/ghostty/`, Ghostty lee
@@ -204,13 +221,22 @@ Y reinicia Ghostty (los cambios de fuente y colores se leen al arrancar).
 
 ## 4. Configurar Git
 
+Si usas el `.gitconfig` de este repo, la identidad ya viene dentro y no hay nada
+que hacer. Si es la de otra persona, cámbiala ahí o ponla en `~/.gitconfig.local`,
+que el `.gitconfig` incluye al final y que nunca se versiona:
+
 ```bash
-git config --global user.name  "Tu Nombre"
-git config --global user.email "tu@email.com"
-git config --global init.defaultBranch main
+git config --file ~/.gitconfig.local user.name  "Tu Nombre"
+git config --file ~/.gitconfig.local user.email "tu@email.com"
 ```
 
-Y autenticar el GitHub CLI (abre el navegador, no escribas tu contraseña en la terminal):
+Comprueba qué identidad quedó activa:
+
+```bash
+git config --show-origin --get user.email
+```
+
+Y autentica el GitHub CLI (abre el navegador, no escribas tu contraseña en la terminal):
 
 ```bash
 gh auth login
@@ -227,6 +253,8 @@ z -                    # ¿Salta zoxide?
 btm                    # ¿Abre el monitor? (q para salir)
 nvim                   # ¿Arranca LazyVim? (:q para salir)
 uv python list         # ¿Ve los Python instalados?
+git lg                 # ¿Sale el log gráfico? (q para salir)
+lg                     # ¿Abre lazygit? (q para salir)
 oh-my-posh --version
 ```
 
@@ -266,5 +294,4 @@ echo 'export AWS_PROFILE="trabajo"' >> ~/.zshrc.local
 
 Lo que falta por agregar:
 
-1. **Git** — `.gitconfig` versionado, con aliases y [delta](https://github.com/dandavison/delta) para los diffs.
-2. **tmux** — sesiones persistentes.
+1. **tmux** — sesiones persistentes.

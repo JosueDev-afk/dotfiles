@@ -38,3 +38,5 @@ brew "uv"                                         # Gestor de Python, venvs y pa
 brew "go"                                         # Toolchain de Go
 brew "git"                                        # Git actualizado (macOS trae uno viejo)
 brew "gh"                                         # GitHub CLI
+brew "git-delta"                                  # Diffs legibles (lo que bat es a cat)
+brew "lazygit"                                    # Interfaz de git en la terminal

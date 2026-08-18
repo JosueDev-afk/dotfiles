@@ -78,7 +78,12 @@ alias viewaws='bat ~/.aws/config'                 # Ver la configuración con el
 alias viewawscred='bat ~/.aws/credentials'         # Ver tus credenciales de forma estructurada
 alias cdaws='cd ~/.aws'                            # Ir directo al directorio de configuración de AWS
 
-# --- 10. LOCAL / PRIVADO ---
+# --- 10. GIT ---
+alias lg='lazygit'                                 # Interfaz de git en la terminal
+alias confgit='nano ~/.gitconfig'                  # Editar la config de git
+alias viewgit='bat ~/.gitconfig'                   # Ver la config con colores
+
+# --- 11. LOCAL / PRIVADO ---
 # Todo lo que no debe subir al repo (tokens, rutas de trabajo, etc.) va aquí.
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
