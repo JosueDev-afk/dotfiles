@@ -20,6 +20,8 @@ nietzshn in ~ λ
 | **Shell** | Zsh (el que trae macOS) |
 | **Terminal** | [Ghostty](https://ghostty.org) |
 | **Prompt** | [oh-my-posh](https://ohmyposh.dev) · tema `half-life` |
+| **Editor** | Neovim + [LazyVim](https://www.lazyvim.org) |
+| **Python** | [uv](https://github.com/astral-sh/uv) |
 | **Fuente** | JetBrainsMono Nerd Font |
 | **Colores** | `#1c1c1c` fondo · `#f1a53b` texto |
 
@@ -53,6 +55,7 @@ dotfiles/
 │   └── .zshrc            # Aliases, prompt, integraciones
 ├── ghostty/
 │   └── config            # Fuente, tema y colores del terminal
+├── nvim/                 # LazyVim (starter + lazy-lock.json con las versiones)
 ├── ohmyposh/
 │   └── half-life.omp.json  # Tema del prompt, versionado aquí
 └── docs/
@@ -75,6 +78,8 @@ Los comandos de siempre, reemplazados:
 | `cd` | [zoxide](https://github.com/ajeetdsouza/zoxide) | Salta a carpetas por historial: `z proyecto` |
 | `top` | [bottom](https://github.com/ClementTsang/bottom) | Gráficas de CPU/RAM en la terminal |
 | `kubectl` | [kubecolor](https://github.com/kubecolor/kubecolor) | La misma salida, pero coloreada |
+| `vim` | [Neovim](https://neovim.io) + [LazyVim](https://www.lazyvim.org) | LSP, autocompletado y plugins ya configurados |
+| `pip`/`venv` | [uv](https://github.com/astral-sh/uv) | Instala Python y resuelve dependencias en segundos |
 
 Y además: [fzf](https://github.com/junegunn/fzf) (búsqueda difusa, lo usa `cdi`),
 AWS CLI, kubectl, Podman y Go.
@@ -106,8 +111,8 @@ echo 'export MI_TOKEN="…"' >> ~/.zshrc.local
 - [x] Zsh + aliases
 - [x] Ghostty + oh-my-posh (`half-life`)
 - [x] Brewfile e instalador
-- [ ] [LazyVim](https://www.lazyvim.org/) como editor
-- [ ] Entorno de Python con [uv](https://github.com/astral-sh/uv)
+- [x] [LazyVim](https://www.lazyvim.org/) como editor
+- [x] Entorno de Python con [uv](https://github.com/astral-sh/uv)
 - [ ] Config de Git (`.gitconfig`, aliases, delta)
 - [ ] tmux
 

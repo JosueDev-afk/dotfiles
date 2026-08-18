@@ -88,6 +88,7 @@ link_configs() {
   bold "3. Configuraciones"
   link "zsh/.zshrc"     "$HOME/.zshrc"
   link "ghostty/config" "$HOME/.config/ghostty/config"
+  link "nvim"           "$HOME/.config/nvim"
 
   # En macOS, Ghostty también lee este directorio. Si quedó una config vieja ahí,
   # se aplicaría encima de la del repo, así que la apartamos.

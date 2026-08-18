@@ -27,6 +27,13 @@ brew "kubecolor"                                  # kubectl con colores
 brew "podman-compose"                             # Alternativa a docker-compose (arrastra podman)
 cask "podman-desktop"                             # GUI para contenedores
 
+# --- Editor ------------------------------------------------------------------
+brew "neovim"                                     # Editor (config: LazyVim)
+brew "fd"                                         # Búsqueda de archivos (la usa LazyVim)
+
+# --- Python ------------------------------------------------------------------
+brew "uv"                                         # Gestor de Python, venvs y paquetes
+
 # --- Desarrollo --------------------------------------------------------------
 brew "go"                                         # Toolchain de Go
 brew "git"                                        # Git actualizado (macOS trae uno viejo)

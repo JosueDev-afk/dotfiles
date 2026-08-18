@@ -108,7 +108,53 @@ podman machine init
 podman machine start
 ```
 
-### 2.7 Desarrollo
+### 2.7 Editor: Neovim + LazyVim
+
+```bash
+brew install neovim fd
+```
+
+`fd` y `ripgrep` no son opcionales: LazyVim los usa para buscar archivos y texto.
+
+La configuración ya está en este repo (`nvim/`), enlazada por `install.sh`. Si
+quieres partir del starter oficial desde cero en otra máquina:
+
+```bash
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git   # para que sea tuya, no un clon del starter
+```
+
+La primera vez que abras `nvim` va a descargar todos los plugins. `lazy-lock.json`
+guarda las versiones exactas, así que en otra máquina obtienes el mismo setup.
+Para actualizar plugins: `:Lazy update` (y commitea el `lazy-lock.json` que cambie).
+
+### 2.8 Python con uv
+
+```bash
+brew install uv
+```
+
+`uv` reemplaza a `pyenv`, `pip`, `venv` y `poetry` de un solo golpe. macOS trae un
+Python 3.9 del sistema que **no debes tocar**; deja que uv maneje los suyos:
+
+```bash
+uv python install 3.13      # Instala Python, sin pelearse con el del sistema
+uv python list              # Ver los que tienes
+
+uv init mi-proyecto         # Proyecto nuevo con pyproject.toml
+cd mi-proyecto
+uv add requests             # Agrega una dependencia (crea el venv solo)
+uv run main.py              # Corre dentro del venv, sin activarlo a mano
+```
+
+Para herramientas de línea de comandos escritas en Python, sin instalarlas
+globalmente:
+
+```bash
+uvx ruff check .            # Las corre en un entorno temporal
+```
+
+### 2.9 Desarrollo
 
 ```bash
 brew install go git gh
@@ -130,6 +176,8 @@ ln -s ~/Development/dotfiles/zsh/.zshrc ~/.zshrc
 
 mkdir -p ~/.config/ghostty
 ln -s ~/Development/dotfiles/ghostty/config ~/.config/ghostty/config
+
+ln -s ~/Development/dotfiles/nvim ~/.config/nvim
 ```
 
 > **Ojo con Ghostty en macOS:** además de `~/.config/ghostty/`, Ghostty lee
@@ -177,6 +225,8 @@ lsd --tree --depth 1   # ¿Se ven los iconos?
 bat README.md          # ¿Hay colores?
 z -                    # ¿Salta zoxide?
 btm                    # ¿Abre el monitor? (q para salir)
+nvim                   # ¿Arranca LazyVim? (:q para salir)
+uv python list         # ¿Ve los Python instalados?
 oh-my-posh --version
 ```
 
@@ -214,9 +264,7 @@ echo 'export AWS_PROFILE="trabajo"' >> ~/.zshrc.local
 
 ## Pendientes
 
-Lo que falta por agregar, en orden:
+Lo que falta por agregar:
 
-1. **[LazyVim](https://www.lazyvim.org/)** — `brew install neovim` y clonar el starter en `~/.config/nvim`.
-2. **Python con [uv](https://github.com/astral-sh/uv)** — `brew install uv`.
-3. **Git** — `.gitconfig` versionado, con aliases y [delta](https://github.com/dandavison/delta) para los diffs.
-4. **tmux** — sesiones persistentes.
+1. **Git** — `.gitconfig` versionado, con aliases y [delta](https://github.com/dandavison/delta) para los diffs.
+2. **tmux** — sesiones persistentes.

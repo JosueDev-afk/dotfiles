@@ -2,6 +2,10 @@
 # .zshrc — https://github.com/JosueDev-afk/dotfiles
 # ==============================================================================
 
+# INICIALIZACIÓN DE HOMEBREW (Agregado aquí)
+# Si usas Apple Silicon (M1/M2/M3/M4):
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Raíz del repo, resuelta desde la ruta real de este archivo (aguanta el symlink),
 # para que funcione sin importar dónde lo clones.
 export DOTFILES="${DOTFILES:-${${(%):-%N}:A:h:h}}"
@@ -77,3 +81,4 @@ alias cdaws='cd ~/.aws'                            # Ir directo al directorio de
 # --- 10. LOCAL / PRIVADO ---
 # Todo lo que no debe subir al repo (tokens, rutas de trabajo, etc.) va aquí.
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
