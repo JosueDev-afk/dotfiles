@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+._*
+
+# Nada privado debería llegar aquí, pero por si acaso:
+*.local
+.env
+.env.*
+*credentials*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Backups que genera install.sh
+*.backup-*

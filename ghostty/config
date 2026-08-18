@@ -1,0 +1,12 @@
+# ==============================================================================
+# Ghostty — https://ghostty.org/docs/config
+# Paleta estilo Black Mesa: gris oscuro metálico + naranja/ámbar.
+# ==============================================================================
+
+font-family = "JetBrainsMono Nerd Font"
+theme = "classic-dark"
+
+# Fondo gris oscuro metálico y texto naranja/amarillo estilo Black Mesa
+background = #1c1c1c
+foreground = #f1a53b
+cursor-color = #f1a53b
