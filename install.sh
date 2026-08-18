@@ -89,6 +89,7 @@ link_configs() {
   link "zsh/.zshrc"     "$HOME/.zshrc"
   link "ghostty/config" "$HOME/.config/ghostty/config"
   link "nvim"           "$HOME/.config/nvim"
+  link "tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
   link "git/.gitconfig" "$HOME/.gitconfig"
   link "git/ignore"     "$HOME/.config/git/ignore"
   # En macOS lazygit no usa ~/.config, sino Application Support

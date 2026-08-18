@@ -10,3 +10,6 @@ theme = "classic-dark"
 background = #1c1c1c
 foreground = #f1a53b
 cursor-color = #f1a53b
+
+# Option se comporta como Alt, para que funcionen los atajos de tmux y Neovim
+macos-option-as-alt = true

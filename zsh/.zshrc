@@ -83,7 +83,14 @@ alias lg='lazygit'                                 # Interfaz de git en la termi
 alias confgit='nano ~/.gitconfig'                  # Editar la config de git
 alias viewgit='bat ~/.gitconfig'                   # Ver la config con colores
 
-# --- 11. LOCAL / PRIVADO ---
+# --- 11. TMUX ---
+alias t='tmux'                                     # Sesión nueva sin nombre
+alias tn='tmux new -s'                             # Sesión con nombre: tn trabajo
+alias ta='tmux attach -t'                          # Reconectar: ta trabajo
+alias tls='tmux ls'                                # Ver las sesiones abiertas
+alias conftmux='nano ~/.config/tmux/tmux.conf'     # Editar la config de tmux
+
+# --- 12. LOCAL / PRIVADO ---
 # Todo lo que no debe subir al repo (tokens, rutas de trabajo, etc.) va aquí.
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 

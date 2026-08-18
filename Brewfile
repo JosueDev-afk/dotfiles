@@ -40,3 +40,4 @@ brew "git"                                        # Git actualizado (macOS trae 
 brew "gh"                                         # GitHub CLI
 brew "git-delta"                                  # Diffs legibles (lo que bat es a cat)
 brew "lazygit"                                    # Interfaz de git en la terminal
+brew "tmux"                                       # Sesiones de terminal persistentes

@@ -23,6 +23,7 @@ nietzshn in ~ λ
 | **Editor** | Neovim + [LazyVim](https://www.lazyvim.org) |
 | **Python** | [uv](https://github.com/astral-sh/uv) |
 | **Git** | [delta](https://github.com/dandavison/delta) + [lazygit](https://github.com/jesseduffield/lazygit) |
+| **Multiplexor** | [tmux](https://github.com/tmux/tmux) · prefijo `Ctrl-a` |
 | **Fuente** | JetBrainsMono Nerd Font |
 | **Colores** | `#1c1c1c` fondo · `#f1a53b` texto |
 
@@ -62,6 +63,8 @@ dotfiles/
 │   └── ignore            # .gitignore global (.DS_Store y demás basura)
 ├── lazygit/
 │   └── config.yml        # Interfaz de git, con la misma paleta
+├── tmux/
+│   └── tmux.conf         # Prefijo Ctrl-a, mouse, y colores reales en Ghostty
 ├── ohmyposh/
 │   └── half-life.omp.json  # Tema del prompt, versionado aquí
 └── docs/
@@ -102,6 +105,18 @@ confghostty     # Editar la config de Ghostty
 reload          # Recargar la shell tras un cambio
 system          # Monitor de sistema expandido
 lg              # lazygit: staging, commits y ramas sin escribir comandos
+tn trabajo      # Sesión de tmux llamada "trabajo"
+ta trabajo      # Reconectarte a ella (aunque cierres la terminal)
+```
+
+Dentro de tmux, el prefijo es `Ctrl-a`:
+
+```
+Ctrl-a |        Dividir en vertical
+Ctrl-a -        Dividir en horizontal
+Ctrl-a h/j/k/l  Moverse entre paneles
+Ctrl-a d        Desconectarse (la sesión sigue viva)
+Ctrl-a r        Recargar la config
 ```
 
 Y los de git, ya dentro del `.gitconfig`:
@@ -132,7 +147,7 @@ echo 'export MI_TOKEN="…"' >> ~/.zshrc.local
 - [x] [LazyVim](https://www.lazyvim.org/) como editor
 - [x] Entorno de Python con [uv](https://github.com/astral-sh/uv)
 - [x] Config de Git (`.gitconfig`, aliases, delta, lazygit)
-- [ ] tmux
+- [x] tmux
 
 ## Licencia
 

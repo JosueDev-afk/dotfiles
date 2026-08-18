@@ -170,6 +170,59 @@ Dentro de lazygit: `espacio` agrega/quita archivos, `c` hace commit, `P` empuja,
 
 ---
 
+### 2.10 tmux
+
+```bash
+brew install tmux
+```
+
+tmux mantiene tus sesiones vivas aunque cierres la terminal: abres varios paneles,
+te desconectas, y al día siguiente `tmux attach` te devuelve todo como estaba.
+Sobre SSH es la diferencia entre perder el trabajo al caerse la conexión y no
+perder nada.
+
+Con Ghostty hay **dos ajustes que no son opcionales**, ambos ya incluidos en
+`tmux/tmux.conf`:
+
+```tmux
+set -g default-terminal "tmux-256color"
+set -as terminal-features ",xterm-ghostty:RGB"
+```
+
+Sin ellos tmux asume una terminal de 256 colores y los temas de Neovim se ven
+lavados o directamente mal, porque pierde los 24 bits de color que Ghostty sí
+soporta. El otro imprescindible es `escape-time 10`: con el valor por defecto,
+la tecla ESC en Neovim tarda medio segundo en responder.
+
+Del lado de Ghostty, `ghostty/config` incluye:
+
+```
+macos-option-as-alt = true
+```
+
+para que la tecla Option funcione como Alt y los atajos de tmux y Neovim
+respondan.
+
+> **Nota sobre `TERM`:** Ghostty usa `xterm-ghostty`, un terminfo que trae dentro
+> de la app. Localmente funciona solo. Si haces SSH a un servidor que no lo
+> conoce, copia el terminfo con:
+> `infocmp -x | ssh servidor -- tic -x -`
+
+Comandos básicos:
+
+```bash
+tmux new -s trabajo    # Sesión nueva con nombre
+tmux ls                # Ver sesiones
+tmux attach -t trabajo # Reconectarse
+```
+
+Y dentro, con prefijo `Ctrl-a`: `|` y `-` dividen, `h/j/k/l` navegan entre
+paneles, `d` te desconecta, `r` recarga la config, `Ctrl-a Enter` entra al modo
+copia (con `v` seleccionas y `y` copias al portapapeles de macOS).
+
+Si prefieres el prefijo original `Ctrl-b`, cambia las tres primeras líneas del
+`tmux.conf`.
+
 ## 3. Enlazar las configuraciones
 
 La idea: los archivos **viven en el repo** y en `$HOME` solo hay symlinks
@@ -186,6 +239,9 @@ mkdir -p ~/.config/ghostty
 ln -s ~/Development/dotfiles/ghostty/config ~/.config/ghostty/config
 
 ln -s ~/Development/dotfiles/nvim ~/.config/nvim
+
+mkdir -p ~/.config/tmux
+ln -s ~/Development/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
 
 ln -s ~/Development/dotfiles/git/.gitconfig ~/.gitconfig
 mkdir -p ~/.config/git
@@ -255,6 +311,7 @@ nvim                   # ¿Arranca LazyVim? (:q para salir)
 uv python list         # ¿Ve los Python instalados?
 git lg                 # ¿Sale el log gráfico? (q para salir)
 lg                     # ¿Abre lazygit? (q para salir)
+tmux new -s prueba     # ¿Arranca con la barra ámbar? (Ctrl-a d para salir)
 oh-my-posh --version
 ```
 
@@ -292,6 +349,8 @@ echo 'export AWS_PROFILE="trabajo"' >> ~/.zshrc.local
 
 ## Pendientes
 
-Lo que falta por agregar:
+Nada crítico. Ideas para más adelante:
 
-1. **tmux** — sesiones persistentes.
+- **[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)** —
+  moverse entre paneles de tmux y ventanas de Neovim con las mismas teclas.
+- **Extras de LazyVim** — `:LazyExtras` para agregar soporte de lenguajes.
