@@ -90,7 +90,23 @@ alias ta='tmux attach -t'                          # Reconectar: ta trabajo
 alias tls='tmux ls'                                # Ver las sesiones abiertas
 alias conftmux='nano ~/.config/tmux/tmux.conf'     # Editar la config de tmux
 
-# --- 12. LOCAL / PRIVADO ---
+# --- 12. DOTFILES ---
+alias dotsync="$DOTFILES/sync.sh"                  # Subir cambios de config a GitHub
+alias cddot='cd $DOTFILES'                         # Ir al repo de dotfiles
+
+# Aviso discreto al abrir la terminal si hay config sin subir.
+# Callado cuando todo está al día. Se usa wc y no grep porque grep está
+# aliaseado a rg más arriba y la expansión de alias también aplica aquí.
+() {
+  [[ -d $DOTFILES/.git ]] || return
+  local dirty ahead
+  dirty=$(git -C $DOTFILES status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+  ahead=$(git -C $DOTFILES rev-list --count '@{u}..HEAD' 2>/dev/null || echo 0)
+  (( dirty + ahead > 0 )) && \
+    print -P "%F{214}dotfiles%f · ${dirty} sin commitear, ${ahead} sin subir — corre %F{214}dotsync%f"
+}
+
+# --- 13. LOCAL / PRIVADO ---
 # Todo lo que no debe subir al repo (tokens, rutas de trabajo, etc.) va aquí.
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 

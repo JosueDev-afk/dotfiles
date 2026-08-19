@@ -359,6 +359,19 @@ done
 Para quedarte con uno, cópialo a `ohmyposh/` y apunta ahí el `.zshrc`. El de
 este repo es `half-life`.
 
+### Subir tus cambios
+
+Los archivos están enlazados, así que editar `~/.zshrc` ya modifica el repo. Para
+que llegue a GitHub:
+
+```bash
+dotsync
+```
+
+Te enseña qué cambió, te ofrece un mensaje automático y pide confirmación antes
+de empujar. `dotsync --pull` hace el camino inverso, para cuando cambiaste algo
+en otra máquina.
+
 ### Cosas privadas
 
 Tokens, rutas de trabajo, aliases de un solo cliente — nada de eso va al repo.

@@ -53,6 +53,7 @@ manual (o instalar solo una parte), está todo en **[docs/INSTALL.md](docs/INSTA
 dotfiles/
 ├── Brewfile              # Todos los paquetes, en un solo archivo
 ├── install.sh            # Instala + enlaza (idempotente, con backups)
+├── sync.sh               # Sube tus cambios de config a GitHub (`dotsync`)
 ├── zsh/
 │   └── .zshrc            # Aliases, prompt, integraciones
 ├── ghostty/
@@ -74,6 +75,30 @@ dotfiles/
 Las configuraciones se enlazan con symlinks a su lugar en `$HOME`, así que
 editar `~/.zshrc` es editar el archivo del repo. Un `git diff` te dice siempre
 qué has cambiado.
+
+## Mantener el repo al día
+
+Como los archivos están enlazados, tus cambios ya están en el repo en cuanto
+guardas. Lo único manual es subirlos, y para eso está `dotsync`:
+
+```bash
+dotsync                 # Muestra qué cambió, pregunta el mensaje, commitea y empuja
+dotsync "Agrego alias"  # Con el mensaje ya puesto
+dotsync --pull          # Trae lo que cambiaste en otra máquina
+dotsync --status        # Solo dice cómo está, sin tocar nada
+```
+
+Nada se sube sin que confirmes. Si le das Enter en el mensaje, arma uno a partir
+de los archivos tocados (`Actualizo zsh y Ghostty`).
+
+Además, al abrir una terminal te avisa si tienes config sin subir:
+
+```
+dotfiles · 2 sin commitear, 0 sin subir — corre dotsync
+```
+
+Si prefieres control fino sobre qué entra en cada commit, `lg` (lazygit) hace lo
+mismo con más detalle.
 
 ## Las herramientas
 
