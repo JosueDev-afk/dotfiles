@@ -322,6 +322,29 @@ debe estar `font-family = "JetBrainsMono Nerd Font"`.
 
 ## Personalizar
 
+### Cambiar el tema de Ghostty
+
+El `theme` aporta la **paleta ANSI de 16 colores** — la que usan `lsd`, `bat`,
+Neovim y cualquier programa que coloree su salida. El `background`, `foreground`
+y `cursor-color` que van después lo sobrescriben en esos tres puntos, y por eso
+el fondo sigue siendo `#1c1c1c` aunque el tema traiga otro.
+
+Para ver los 463 temas que trae Ghostty, con vista previa:
+
+```bash
+ghostty +list-themes
+```
+
+Los nombres llevan mayúsculas y espacios tal cual (`Gruvbox Dark`, no
+`gruvbox-dark`). Si te equivocas, Ghostty abre un diálogo de error al arrancar y
+usa su paleta por defecto — que es exactamente lo que pasa si escribes un tema
+inexistente. Para comprobar que tu config es válida antes de reiniciar:
+
+```bash
+ghostty +validate-config --config-file=~/.config/ghostty/config
+ghostty +show-config --default=false     # Qué quedó activo de verdad
+```
+
 ### Cambiar el tema del prompt
 
 Los temas están en `$(brew --prefix oh-my-posh)/themes/`. Míralos todos:

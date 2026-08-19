@@ -4,9 +4,13 @@
 # ==============================================================================
 
 font-family = "JetBrainsMono Nerd Font"
-theme = "classic-dark"
 
-# Fondo gris oscuro metálico y texto naranja/amarillo estilo Black Mesa
+# El tema aporta la paleta ANSI de 16 colores (la que usan lsd, bat y Neovim).
+# Gruvbox es cálido y terroso, así no compite con el ámbar del texto.
+theme = "Gruvbox Dark"
+
+# Fondo gris oscuro metálico y texto naranja/amarillo estilo Black Mesa.
+# Van después del tema a propósito: lo que se declara al final gana.
 background = #1c1c1c
 foreground = #f1a53b
 cursor-color = #f1a53b
